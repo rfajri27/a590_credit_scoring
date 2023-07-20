@@ -6,9 +6,9 @@ from prediction import prediction
 
 col1, col2 = st.columns([1, 5])
 with col1:
-    st.image("https://github.com/dicodingacademy/assets/raw/main/logo.png", width=100)
+    st.image("https://github.com/dicodingacademy/assets/raw/main/logo.png", width=130)
 with col2:
-    st.header('Credit Scoring App (Prototype)')
+    st.header('Credit Scoring App (Prototype) :sparkles:')
 
 data = pd.DataFrame()
 
@@ -97,8 +97,11 @@ with col3:
     Credit_History_Age = float(st.number_input(label='Credit_History_Age', value=216))
     data["Credit_History_Age"] = Credit_History_Age
 
-# st.dataframe(data=data, width=500, height=150)
+with st.expander("View the Raw Data"):
+    st.dataframe(data=data, width=800, height=10)
 
 if st.button('Predict'):
     new_data = data_preprocessing(data=data)
+    with st.expander("View the Preprocessed Data"):
+        st.dataframe(data=new_data, width=800, height=10)
     st.write("Credit Scoring: {}".format(prediction(new_data)))

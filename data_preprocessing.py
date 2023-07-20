@@ -45,13 +45,13 @@ pca_numerical_columns_2 = [
 ]
 
 def data_preprocessing(data):
-    """Preprocessing data
+    """PPreprocessing data
 
     Args:
-        data (Padas DataFrame): Dataframe that contain all the data to make prediction 
+        data (Pandas DataFrame): Dataframe that contain all the data to make prediction 
         
     return:
-        df (Padas DataFrame): Dataframe that contain all the preprocesed data
+        Pandas DataFrame: Dataframe that contain all the preprocessed data
     """
     data = data.copy()
     df = pd.DataFrame()
@@ -83,5 +83,5 @@ def data_preprocessing(data):
     data["Total_EMI_per_month"] = scaler_Total_EMI_per_month.transform(np.asarray(data["Total_EMI_per_month"]).reshape(-1,1))[0]
     
     df[["pc2_1", "pc2_2"]] = pca_2.transform(data[pca_numerical_columns_2])
-    # print(df)
+    
     return df
